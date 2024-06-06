@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmmlvgofjmmwk"]
+
+[ext_resource type="Shader" path="res://menu.gdshader" id="1_xxxij"]
+[ext_resource type="Texture2D" uid="uid://c66b7hrl84pnh" path="res://backgroundimg.png" id="2_f65bn"]
+[ext_resource type="Script" path="res://play.gd" id="3_l3chs"]
+[ext_resource type="AudioStream" uid="uid://crmc034n7il8t" path="res://game-music-loop-7-145285.mp3" id="4_y8r0l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yehq2"]
+shader = ExtResource("1_xxxij")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_yehq2")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 29.475
+anchor_bottom = 16.858
+offset_right = -16.0001
+offset_bottom = -14.3201
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_f65bn")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 12.0
+offset_right = 874.0
+offset_bottom = 122.0
+theme_override_colors/font_color = Color(0.832746, 0.270619, 0.873734, 1)
+theme_override_font_sizes/font_size = 80
+text = "It's Something "
+
+[node name="play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 497.0
+offset_top = 328.0
+offset_right = 625.0
+offset_bottom = 391.0
+theme_override_font_sizes/font_size = 40
+text = "START"
+script = ExtResource("3_l3chs")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_y8r0l")
+autoplay = true
+
+[connection signal="pressed" from="play" to="play" method="_on_pressed"]
